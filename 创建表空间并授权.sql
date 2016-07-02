@@ -1,4 +1,4 @@
---´´½¨±í¿Õ¼ä
+--åˆ›å»ºè¡¨ç©ºé—´
 CREATE TABLESPACE gisdata DATAFILE
   'D:\app\gisdata.DBF' SIZE 10M AUTOEXTEND ON NEXT 10M MAXSIZE UNLIMITED
 LOGGING
@@ -7,7 +7,8 @@ BLOCKSIZE 8K
 SEGMENT SPACE MANAGEMENT AUTO
 FLASHBACK ON;
 
---´´½¨ÓÃ»§²¢ÊÚÈ¨
+
+--åˆ›å»ºç”¨æˆ·å¹¶æˆæƒ
 CREATE USER gisdata IDENTIFIED BY gisdata
  DEFAULT TABLESPACE gisdata
  TEMPORARY TABLESPACE TEMP
@@ -17,17 +18,17 @@ GRANT "DBA" TO gisdata WITH ADMIN OPTION;
 GRANT "RESOURCE" TO gisdata WITH ADMIN OPTION;
 ALTER USER gisdata DEFAULT ROLE "CONNECT", "DBA", "RESOURCE";
 
---À©Õ¹±í¿Õ¼ä
+--æ‰©å±•è¡¨ç©ºé—´
 ALTER database datafile 'D:\app\zzcoredata4.DBF' AUTOEXTEND ON
 NEXT 50M
 MAXSIZE 2000M;
 
-imp system/hongzhi@orcl file=H:\ÖØÒªÍ¼Æ¬\100zzcoredata1Êı¾İ¿â±¸·İ\110DB.DMP fromuser=zzcoredata1 touser=zzcoredata3 ignore=y
+imp system/hongzhi@orcl file=H:\é‡è¦å›¾ç‰‡\100zzcoredata1æ•°æ®åº“å¤‡ä»½\110DB.DMP fromuser=zzcoredata1 touser=zzcoredata3 ignore=y
 
-½«ÃÜÂëÓĞĞ§ÆÚÓÉÄ¬ÈÏµÄ180ÌìĞŞ¸Ä³É¡°ÎŞÏŞÖÆ¡±£º
+å°†å¯†ç æœ‰æ•ˆæœŸç”±é»˜è®¤çš„180å¤©ä¿®æ”¹æˆâ€œæ— é™åˆ¶â€ï¼š
 ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED; 
 
-//²é¿´µ±Ç°Á¬½ÓÊı
+//æŸ¥çœ‹å½“å‰è¿æ¥æ•°
 select count(*) from v$process;
-//²é¿´×î´óÁ¬½ÓÊı
+//æŸ¥çœ‹æœ€å¤§è¿æ¥æ•°
 select value from v$parameter where name = 'processes';
